@@ -26,13 +26,7 @@ def create_world():
     world.add_link(room1, room2, "north")
     world.add_link(room2, room3, "east")
     world.add_link(room3, room4, "south")
-    world.add_link(room4, room5, "west")
-    
-     # Create NPCs
-    wizard = NPC("Wizard", "A wise and friendly wizard greets you.")
-
-    # Add NPCs to rooms
-    room3.add_npc(wizard)  # Add the wizard to the cave interior
+    world.add_link(room4, room5, "west")   
 
     return world
 
@@ -56,8 +50,7 @@ def main():
     # Game loop
     while True:
         # Display current room description, inventory, and available actions.
-        print(current_room.description)
-        print("NPCs: ", ", ".join([npc.description for npc in current_room.npcs]))
+        print(current_room.description)        
         print("Inventory: ", ", ".join([item.name for item in player.inventory]))
         print("Available Actions: ", ", ".join([action.name for action in actions]))
         
@@ -94,16 +87,7 @@ def main():
                     pass
                 
                 if action.context == "npc":
-                    # Check if the NPC is in the same room
-                    npc = next((npc for npc in current_room.npcs if obj_name == npc.name.lower()), None)
-
-                    if npc:
-                        if action.name == "Talk":
-                            npc.talk(player)  # Call the talk method of the NPC
-                        else:
-                            print("You can't do that with the", npc.name)
-                    else:
-                        print("NPC not found.")
+                    pass
                         
                 elif action.context == "room":
                     # Check if the object is in the same room
