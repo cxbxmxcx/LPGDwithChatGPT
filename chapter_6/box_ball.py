@@ -74,6 +74,7 @@ while running:
             body = shape.body
             vertices = [p.rotated(body.angle) + body.position for p in shape.get_vertices()]
             vertices = [(int(x), int(y)) for x, y in vertices]
+            #vertices = [p + body.position for p in shape.get_vertices()]  # uncomment to see boxes not rotate
             pygame.draw.polygon(screen, (255, 0, 0), vertices)
 
     pygame.draw.line(screen, (0, 0, 0), (0, height), (width, height), 2)
